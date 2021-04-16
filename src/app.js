@@ -1,8 +1,14 @@
+
 import React from 'react';
 import {useState,useEffect} from 'react';
+
 import Info from './components/info';
 import InputForm from './components/form';
 import Comments from './components/comments';
+
+
+
+
 
 function App(){
     const [comments,setComments] = useState([]);
