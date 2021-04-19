@@ -7,9 +7,6 @@ import InputForm from './components/form';
 import Comments from './components/comments';
 
 
-
-
-
 function App(){
     const [comments,setComments] = useState([]);
 

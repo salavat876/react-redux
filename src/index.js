@@ -9,19 +9,19 @@ import './sass/style.scss';
 
 //import reducer & main component
 import comments from './reducers/comments'
-import App from './app';
-
-
-//
+import App from './containers/app';
 
 
 //redux states
 let initialState =[]
-
+//redux store
 const store = createStore(comments,initialState);
 
 
 //react component class
 ReactDOM.render(
-    <App store={store} />, document.getElementById('root')
+    <Provider store={store}>
+        <App  />
+    </Provider>
+, document.getElementById('root')
 )
