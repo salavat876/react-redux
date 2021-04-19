@@ -1,49 +1,49 @@
 import React from 'react';
 import {useState} from 'react';
 
-const InputForm =({addComments})=>{
-    const [userInput,setUserInput] = useState('');
-    const [userName,setUserNameInput] = useState('');
+const InputForm =()=>{
+    // const [userInput,setUserInput] = useState('');
+    // const [userName,setUserNameInput] = useState('');
 
-    const handleChangeUserInput = (ev) => {
-        setUserNameInput(ev.currentTarget.value);
-    }
+    // const handleChangeUserInput = (ev) => {
+    //     setUserNameInput(ev.currentTarget.value);
+    // }
 
-    const handleChangeComment = (ev) =>{
-        setUserInput(ev.currentTarget.value);
-    }
+    // const handleChangeComment = (ev) =>{
+    //     setUserInput(ev.currentTarget.value);
+    // }
 
-    const handleSubmit = (ev) =>{
-        ev.preventDefault();
-        addComments(userInput,userName);
-        setUserInput('');
-        setUserNameInput('');
-    }
+    // const handleSubmit = (ev) =>{
+    //     ev.preventDefault();
+    //     addComments(userInput,userName);
+    //     setUserInput('');
+    //     setUserNameInput('');
+    // }
 
-    const handleKeyPress = (ev) =>{
-        if(ev.key === 'Enter'){
-            handleSubmit(ev)
-        }
-    }
+    // const handleKeyPress = (ev) =>{
+    //     if(ev.key === 'Enter'){
+    //         handleSubmit(ev)
+    //     }
+    // }
 
         return (
             <form
                 className="fixed-container"
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
             >
                 <input 
                     className ="user-name_input"
-                    value={userName}
+                    // // value={userName}
                     type="text"
-                    onChange={handleChangeUserInput}
+                    // onChange={handleChangeUserInput}
                     placeholder="ваше имя"
                 />
                 <input
                     className ="comment"
-                    value={userInput}
+                    // value={userInput}
                     type="text"
-                    onChange={handleChangeComment}
-                    onKeyDown={handleKeyPress}
+                    // onChange={handleChangeComment}
+                    // onKeyDown={handleKeyPress}
                     placeholder="Ваш комментарий"
                 />
                 <button className="btn_submit">Отправить</button>

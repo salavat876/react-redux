@@ -2,27 +2,26 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
 
-import Info from './components/info';
-import InputForm from './components/form';
-import Comments from './components/comments';
+import Info from '../components/Info';
+import InputForm from '../components/form';
+import Comments from '../components/comments';
 
 
 function App(){
-    const [comments,setComments] = useState([]);
 
 
-    useEffect(()=>{
-        const raw = localStorage.getItem('comments');
+    // useEffect(()=>{
+    //     const raw = localStorage.getItem('comments');
         
-        if(raw){
-            setComments(JSON.parse(raw));
-        }
+    //     if(raw){
+    //         setComments(JSON.parse(raw));
+    //     }
 
-    },[])
+    // },[])
 
-    useEffect(() =>{
-        localStorage.setItem('comments',JSON.stringify(comments));
-    },[comments])
+    // useEffect(() =>{
+    //     localStorage.setItem('comments',JSON.stringify(comments));
+    // },[comments])
 
     const addComments = (userInput,userInputName) =>{
         if(userInput && userInputName){
@@ -66,21 +65,16 @@ function App(){
     return(
         <div className="fixed-container">
             <Info />
-            <InputForm addComments={addComments} />
-            <h1>Comments {comments.length}</h1>
+            <InputForm/>
+            <h1>Comments </h1>
             <ul>
-            {comments.map((comment,userName) => {
+            {/* {comments.map(() => {
                 return(
-                        <li key={comment.id}>
-                        <Comments
-                            userName={userName}
-                            comment={comment}
-                            key={comment.id}
-                            removeComments={removeComments}
-                        />
+                        <li >
+                        <Comments/>
                         </li>
                 )
-            })}
+            })} */}
             </ul>
         </div>
     )

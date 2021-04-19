@@ -2,7 +2,6 @@ import {addComments,removeComments} from './types'
 
 const comments =(state,action) => {
 
-
     switch(action.type) {
 
         case addComments:
