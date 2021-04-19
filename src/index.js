@@ -16,7 +16,7 @@ import App from './app';
 
 
 //redux states
-const initialState =[]
+let initialState =[]
 
 const store = createStore(comments,initialState);
 
