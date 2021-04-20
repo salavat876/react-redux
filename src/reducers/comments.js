@@ -1,6 +1,6 @@
 import {addComments,removeComments} from './types'
 
-const comments =(state,action) => {
+const comments =(state = [],action) => {
 
     switch(action.type) {
 
@@ -9,7 +9,7 @@ const comments =(state,action) => {
                 ...state,
                 {
                     id:Math.random().toString(36).substr(2,9),
-                    name:action.name,
+                    userName:action.name,
                     comment:action.comment,
                     date:action.date
                 }
@@ -17,7 +17,7 @@ const comments =(state,action) => {
 
         case removeComments:
             return state.map((comment)=>{
-                return comment.id != id
+                return comment.id != comment.id
             })
         
         default:

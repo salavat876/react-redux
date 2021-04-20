@@ -1,4 +1,4 @@
-export const addComments = ({comment,name}) =>{
+export const action_add_comments = ({comment,name}) =>{
     return{
         type:'ADD_COMMENTS',
         id:Math.random().toString(36).substr(2,9),
@@ -7,9 +7,8 @@ export const addComments = ({comment,name}) =>{
     }
 }
 
-export const removeComments = (id) =>{
+export const action_remove_comments = () =>{
     return {
         type:'REMOVE_COMMENTS',
-        id
     }
 }
