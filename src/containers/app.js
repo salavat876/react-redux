@@ -9,6 +9,7 @@ import Comments from '../components/comments';
 
 //import action-Creators
 import{action_add_comments,action_remove_comments} from '../actions/index'
+import { connect } from 'react-redux';
 
 const mapDispatchToProps = (dispatch) =>{
     return {
@@ -26,7 +27,7 @@ const mapStateToProps = (state) => {
 }
 
 
-function App({userName,comment,date,action_add_comments,action_remove_comments}){
+function App({userName,comment,date,action_add_comments,action_remove_comments,id}){
     
     const addComments = (comment,name) =>{
         if(comment && name){
@@ -36,7 +37,6 @@ function App({userName,comment,date,action_add_comments,action_remove_comments})
             const date = NewDate.getDate();
 
             const newItem = {
-                id:Math.random().toString(36).substr(2,9),
                 comment:comment,
                 name:name,
                 fullDate:{
@@ -45,8 +45,6 @@ function App({userName,comment,date,action_add_comments,action_remove_comments})
                     date:date
                 }
             }
-
-            setComments([...comments,newItem])
         } 
         else{
             alert('Заполните,пожалуйста, все поля!')
@@ -71,21 +69,21 @@ function App({userName,comment,date,action_add_comments,action_remove_comments})
         <div className="fixed-container">
             <Info />
             <InputForm
-                valueUserName={userName}
-                valueComment={comment}
+                addComments={action_add_comments}
             />
             <h1>Comments </h1>
             <ul>
-            {/* {comments.map(() => {
-                return(
                         <li >
-                        <Comments/>
+                        <Comments
+                            userName={userName}
+                            comment={comment}
+                            action={action_add_comments}
+                            removeComments={removeComments}
+                        />
                         </li>
-                )
-            })} */}
             </ul>
         </div>
     )
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App)

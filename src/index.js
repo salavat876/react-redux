@@ -1,8 +1,8 @@
 //import react/redux
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore,bindActionCreators} from 'redux';
-import {Provider,connect} from 'react-redux';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
 //import styles
 import './css/style.css';
@@ -17,17 +17,17 @@ import {action_add_comments,action_remove_comments} from './actions/index'
 //redux states
 let initialState =[]
 //redux store
-const store = createStore(comments,initialState);
+const store = createStore(comments,initialState,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-store.dispatch(action_add_comments({type:'ADD_COMMENTS',name:'comments'}))
 console.log(store.getState());
 
 
 // store.dispatch(action_remove_comments({type:'REMOVE_COMMENTS',id}))
 ReactDOM.render(
     <Provider store={store}>
-        <App  />
+        <App/>
     </Provider>
 , document.getElementById('root')
 )
+
 
