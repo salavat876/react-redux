@@ -1,32 +1,30 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import {action_add_comments} from '../actions/index'
+import {useState} from 'react';
 
-const InputForm =()=>{
-    const dispatch = useDispatch();
-    let userName = null
-    let comment = null;
+const InputForm =({addComments})=>{
+    const [userInput,setUserInput] = useState('');
+    const [userName,setUserNameInput] = useState('');
 
-const handleChangeUserInput = (ev) => {
-    userName = ev.currentTarget.value;
-}
-
-const handleChangeComment = (ev) => {
-    comment = ev.currentTarget.value;
-}
-
-const handleSubmit = (ev) => {
-    ev.preventDefault();
-    dispatch( action_add_comments(comment,userName))
-
-
-}
-
-const handleKeyPress = (ev) => {
-    if (ev.key === 'Enter') {
-        handleSubmit(ev)
+    const handleChangeUserInput = (ev) => {
+        setUserNameInput(ev.currentTarget.value);
     }
-}
+
+    const handleChangeComment = (ev) =>{
+        setUserInput(ev.currentTarget.value);
+    }
+
+    const handleSubmit = (ev) =>{
+        ev.preventDefault();
+        addComments(userInput,userName);
+        setUserInput('');
+        setUserNameInput('');
+    }
+
+    const handleKeyPress = (ev) =>{
+        if(ev.key === 'Enter'){
+            handleSubmit(ev)
+        }
+    }
 
         return (
             <form
@@ -36,20 +34,19 @@ const handleKeyPress = (ev) => {
                 <input 
                     className ="user-name_input"
                     value={userName}
-                    onChange={handleChangeUserInput}
                     type="text"
+                    onChange={handleChangeUserInput}
                     placeholder="ваше имя"
                 />
                 <input
                     className ="comment"
-                    value={comment}
+                    value={userInput}
                     type="text"
                     onChange={handleChangeComment}
                     onKeyDown={handleKeyPress}
                     placeholder="Ваш комментарий"
                 />
-                <button 
-                className="btn_submit">Отправить</button>
+                <button className="btn_submit">Отправить</button>
             </form>
 
         )
