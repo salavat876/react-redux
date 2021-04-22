@@ -1,10 +1,11 @@
 import React from 'react';
-
+import {useDispatch} from 'react-redux';
 import {action_add_comments} from '../actions/index'
 
 const InputForm =()=>{
-    let userName = null;
-    let comment = null ;
+    const dispatch = useDispatch();
+    let userName = null
+    let comment = null;
 
 const handleChangeUserInput = (ev) => {
     userName = ev.currentTarget.value;
@@ -16,9 +17,8 @@ const handleChangeComment = (ev) => {
 
 const handleSubmit = (ev) => {
     ev.preventDefault();
-    action_add_comments(comment,userName);
-    userName = '';
-    comment = '';
+    dispatch( action_add_comments(comment,userName))
+
 
 }
 
@@ -44,7 +44,7 @@ const handleKeyPress = (ev) => {
                     className ="comment"
                     value={comment}
                     type="text"
-                    onChange={action_add_comments}
+                    onChange={handleChangeComment}
                     onKeyDown={handleKeyPress}
                     placeholder="Ваш комментарий"
                 />

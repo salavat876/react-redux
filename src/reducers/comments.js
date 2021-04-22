@@ -11,8 +11,7 @@ const comments =(state = [],action) => {
                 {
                     id:Math.random().toString(36).substr(2,9),
                     userName:action.name,
-                    comment:action.comment,
-                    date:action.date
+                    comment:action.comment
                 }
             ]
 
