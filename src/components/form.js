@@ -36,6 +36,7 @@ const handleKeyPress = (ev) => {
                 <input 
                     className ="user-name_input"
                     value={userName}
+                    onChange={handleChangeUserInput}
                     type="text"
                     placeholder="ваше имя"
                 />
@@ -43,14 +44,11 @@ const handleKeyPress = (ev) => {
                     className ="comment"
                     value={comment}
                     type="text"
-                    onChange={handleChangeComment}
+                    onChange={action_add_comments}
                     onKeyDown={handleKeyPress}
                     placeholder="Ваш комментарий"
                 />
                 <button 
-                onClick={()=>{
-                    action_add_comments(comment,userName)
-                }}
                 className="btn_submit">Отправить</button>
             </form>
 
