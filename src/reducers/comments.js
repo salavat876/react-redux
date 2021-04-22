@@ -1,10 +1,11 @@
 import {addComments,removeComments} from './types'
+import {action_add_comments,action_remove_comments} from '../actions/index'
 
 const comments =(state = [],action) => {
 
     switch(action.type) {
 
-        case addComments:
+        case action_add_comments:
             return[
                 ...state,
                 {
@@ -15,7 +16,7 @@ const comments =(state = [],action) => {
                 }
             ]
 
-        case removeComments:
+        case action_remove_comments:
             return state.map((comment)=>{
                 return comment.id != comment.id
             })
