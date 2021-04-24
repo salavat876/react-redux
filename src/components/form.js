@@ -23,13 +23,11 @@ const InputForm =({action_add_comments})=>{// передаем экшн в пр�
         if (!userName.trim() || !userInput.trim()){
             alert('введите все поля!')
         }
-        else{
             action_add_comments({ //вызываем наш экшн из пропсов
                 comment:userInput,
                 name: userName,
                 date: new Date().toLocaleDateString()
             })
-        }
         setUserInput('');
         setUserNameInput('');
     }
