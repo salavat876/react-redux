@@ -9,17 +9,18 @@ import './css/style.css';
 import './sass/style.scss';
 
 //import reducer & main component
-import comments from './reducers/comments'
+import comments from './redux/reducers/comments'
 import App from './containers/app';
-import {action_add_comments,action_remove_comments} from './actions/index'
 
-
+import {loadState,saveState} from './redux/localStorage/localStorage'
 //redux states
-let initialState =[]
+let initialState = loadState();
 //redux store
 const store = createStore(comments,initialState,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-console.log(store.getState());
+store.subscribe(()=>{
+    saveState(store.getState())
+})
 
 
 // store.dispatch(action_remove_comments({type:'REMOVE_COMMENTS',id}))

@@ -1,7 +1,11 @@
 import React from 'react';
 import {useState} from 'react';
+import {connect} from 'react-redux';
 
-const InputForm =({addComments})=>{
+//импорт экшена
+import {action_add_comments} from '../redux/actions'
+
+const InputForm =({action_add_comments})=>{// передаем экшн в пропсы
     const [userInput,setUserInput] = useState('');
     const [userName,setUserNameInput] = useState('');
 
@@ -15,7 +19,17 @@ const InputForm =({addComments})=>{
 
     const handleSubmit = (ev) =>{
         ev.preventDefault();
-        addComments(userInput,userName);
+
+        if (!userName.trim() || !userInput.trim()){
+            alert('введите все поля!')
+        }
+        else{
+            action_add_comments({ //вызываем наш экшн из пропсов
+                comment:userInput,
+                name: userName,
+                date: new Date().toLocaleDateString()
+            })
+        }
         setUserInput('');
         setUserNameInput('');
     }
@@ -52,4 +66,8 @@ const InputForm =({addComments})=>{
         )
 }
 
-export default InputForm;
+const mapDispatchToProps = {
+    action_add_comments
+}
+
+export default connect(null, mapDispatchToProps)(InputForm)

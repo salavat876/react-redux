@@ -1,9 +1,11 @@
-export const action_add_comments = ({comment,name}) =>{
+import {idCreate} from '../idCreate'
+export const action_add_comments = ({comment,name,date}) =>{
     return{
         type:'ADD_COMMENTS',
-        id:Math.random().toString(36).substr(2,9),
+        id:idCreate(),
         name,
-        comment
+        comment,
+        date
     }
 }
 

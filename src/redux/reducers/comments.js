@@ -1,4 +1,4 @@
-import {addComments,removeComments} from './types'
+
 import {action_add_comments,action_remove_comments} from '../actions/index'
 
 const comments =(state = [],action) => {
@@ -7,8 +7,7 @@ const comments =(state = [],action) => {
 
         case action_add_comments:
             return[
-                ...state,
-                {
+                ...state, {
                     id:Math.random().toString(36).substr(2,9),
                     userName:action.name,
                     comment:action.comment,
