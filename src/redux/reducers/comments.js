@@ -1,19 +1,18 @@
 
-import {action_add_comments,action_remove_comments} from '../actions/index'
-
-const comments =(state = [],action) => {
+import {action_add_comments,action_remove_comments} from '../actions/index';
+    
+const initialState = {
+    comments:[]
+}
+const comments =(state = initialState,action) => {
 
     switch(action.type) {
 
         case action_add_comments:
-            return[
-                ...state, {
-                    id:Math.random().toString(36).substr(2,9),
-                    userName:action.name,
-                    comment:action.comment,
-                    date:action.date
-                }
-            ]
+            return{
+                ...state,comment:[...state,state.comment]            
+            }
+
 
         case action_remove_comments:
             return state.map((comment)=>{
