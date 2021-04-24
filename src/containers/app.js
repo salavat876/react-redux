@@ -21,6 +21,7 @@ function App(){
             <Info />
             <InputForm
             />
+            {/* <Comments /> */}
         </div>
     )
 }

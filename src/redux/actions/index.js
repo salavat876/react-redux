@@ -1,11 +1,9 @@
 import {idCreate} from '../idCreate'
-export const action_add_comments = ({comment,name,date}) =>{
+export const action_add_comments = (comment) =>{
     return{
         type:'ADD_COMMENTS',
         id:idCreate(),
-        name,
-        comment,
-        date
+        comment:comment
     }
 }
 

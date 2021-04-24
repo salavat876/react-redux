@@ -5,12 +5,12 @@ import {connect} from 'react-redux';
 //импорт экшена
 import {action_remove_comments} from '../redux/actions';
 
-const Comments = ({action_remove_comments,stateComments})=>{
+const Comments = ({action_remove_comments,Comments})=>{
 
-// const remove_comments = id => {
-//     action_remove_comments()
-// }
-    return stateComments.map(item =>(
+const remove_comments = id => {
+    action_remove_comments()
+}
+    return Comments.map(item =>(
             <div className ="item-comment">
             <div className="flex-row">
 
@@ -34,7 +34,7 @@ const Comments = ({action_remove_comments,stateComments})=>{
 
 const mapStateToProps = state => {
     return {
-        stateComments: state.comment
+        Comments: state.comment
     }
 }
 

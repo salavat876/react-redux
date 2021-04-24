@@ -14,9 +14,9 @@ import App from './containers/app';
 
 import {loadState,saveState} from './redux/localStorage/localStorage'
 //redux states
-let initialState = loadState();
+let State = loadState();
 //redux store
-const store = createStore(comments,initialState,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(comments,State,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 store.subscribe(()=>{
     saveState(store.getState())
